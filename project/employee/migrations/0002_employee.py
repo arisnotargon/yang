@@ -16,6 +16,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('enterID', models.CharField(max_length=200, verbose_name='EID')),
                 ('DTE', models.CharField(max_length=200, verbose_name='DTE')),
+                ('email', models.CharField(max_length=200, verbose_name='EMAIL')),
             ],
         ),
     ]
