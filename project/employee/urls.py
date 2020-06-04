@@ -12,4 +12,6 @@ urlpatterns = [
     path('update/<int:pk>/', views.UpdateView.as_view(), name='update'), 
     path('delete/<int:pk>/', views.DeleteView.as_view(), name='delete'), 
     path('detail/<int:pk>/', views.detail, name='detail'), 
+    path('create_employee', views.employeeCreate, name='create_employee'), 
+    path('upload_avatar', views.avatarUpload, name='upload_avatar'), 
 ]

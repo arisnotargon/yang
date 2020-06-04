@@ -18,7 +18,7 @@ class DayCreateForm(forms.ModelForm):
 
 class EmployeeCreateForm(forms.ModelForm):
     class Meta:
-        model = Comment
+        model = Employee
         fields = "__all__"
 
 class CommentForm(forms.ModelForm):

@@ -25,8 +25,16 @@ class Day(models.Model):
         return self.title, self.attach.url
 
 class Employee(models.Model):
-    enterID = models.CharField('EID', max_length=200)
-    DTE = models.CharField('DTE', max_length=200)
+    enterID = models.CharField('EID/名前', max_length=200)
+    DTE = models.CharField('所属DTE', max_length=200)
+    homeoffice = models.CharField('ホームオフィス', max_length=200)
+    email = models.CharField('メールアドレス', max_length=200)
+    number = models.CharField('社員番号', max_length=200)
+    family_name = models.CharField('姓', max_length=200)
+    last_name = models.CharField('名', max_length=200)
+    role = models.CharField('ロール', max_length=200)
+    career_level = models.CharField('キャリアレベル', max_length=200)
+    team = models.CharField('所属チーム', max_length=200)
     
     def __str__(self):
         return self.enterID
