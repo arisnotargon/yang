@@ -1,0 +1,18 @@
+{% extends 'employee/base.html' %}
+
+{% block content %}
+
+<h1></h1>
+<h1><span class="badge badge-info">個人基礎情報</span></h1>
+
+<table class="table">
+    <tr>
+        <th>EID</th>
+        <td>{{ employee.title }}</td>
+    </tr>
+    <tr>
+        <th>DTE</th>
+        <td>{{ employee.text }}</td>
+    </tr>
+
+{% endblock %}

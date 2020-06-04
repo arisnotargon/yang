@@ -1,0 +1,31 @@
+{% extends 'employee/base.html' %}
+
+{% block content %}
+
+<h1></h1>
+<h1><span class="badge badge-info">日記削除</span></h1>
+
+<form action="" method="POST">
+<table class="table">
+    <tr>
+        <th>タイトル</th>
+        <td>{{ day.title }}</td>
+    </tr>
+    <tr>
+        <th>本文</th>
+        <td>{{ day.text }}</td>
+    </tr>
+    <tr>
+        <th>日付</th>
+        <td>{{ day.date }}</td>
+    </tr>
+    <tr>
+        <th>天気</th>
+        <td>{% for weather in day.weather.all %} {{ weather }}{% endfor %}</td>
+    </tr>
+</table>
+<p>こちらのデータを削除します。</p>
+<button type="submit" class="btn btn-primary">送信</button>
+{% csrf_token %}
+</form>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'employee/base.html' %}
+
+{% block content %}
+
+<h1></h1>
+<h1><span class="badge badge-info">日記追加</span></h1>
+
+<form action="" method="POST" enctype='multipart/form-data'>
+<table class="table">
+    <tr>
+        <th>{{ form.title.label }}</th>
+        <td>{{ form.title }}</td>
+    </tr>
+    <tr>
+        <th>{{ form.text.label }}</th>
+        <td>{{ form.text }}</td>
+    </tr>
+    <tr>
+        <th>{{ form.date.label }}</th>
+        <td>{{ form.date }}</td>
+    </tr>
+    <tr>
+        <th>{{ form.weather.label }}</th>
+        <td>{{ form.weather }}</td>
+    </tr>
+    <tr>
+        <th>添付ファイル(任意)</th>
+        <td>{{ form.attach }}</td> 
+    </tr>
+</table>
+<button type="submit" class="btn btn-primary">送信</button>
+{% csrf_token %}
+</form>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'employee/base.html' %}
+
+{% block content %}
+<h1></h1>
+<h1><span class="badge badge-info">日記一覧</span></h1>
+
+<form action="" method="GET">
+    {{ form }}
+<button type="submit">検索</button>
+</form>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>タイトル</th>
+            <th>日付</th>
+            <th>天気</th>
+            <th>コメント</th>
+            <th>#</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for day in day_list %}
+    <tr>
+        <td><a href="{% url 'employee:detail' day.pk %}">{{ day.title }}</a></td>
+        <td>{{ day.date }}</td>
+        <td>{% for weather in day.weather.all %} {{ weather }}{% endfor %}</td>
+        <td>
+            {% if omments %}
+                有
+            {% else %}
+                無
+            {% endif %}
+        </td>
+        <td>
+            {% if user.is_superuser %}
+                <a href="{% url 'employee:update' day.pk %}">編集</a>
+            {% endif %}
+        </td>
+
+        <td>
+            
+            {% if user.is_superuser %}
+                <a href="{% url 'employee:delete' day.pk %}">削除</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% include 'employee/page5.html' %}
+
+{% endblock %}
