@@ -1,0 +1,112 @@
+{% extends 'employee/base.html' %}
+
+{% block content %}
+
+<h1></h1>
+<div class="row">
+    <div class="col-4">
+        <h1><span class="badge badge-info">社員管理システム</span></h1>　
+    </div>
+    <div class="col-2">
+        <a href="#">一覧</a>
+    </div>
+    <div class="col-2">
+        <a href="#">管理メニュー</a>
+    </div>
+    <div class="col-4"></div>
+</div>
+
+<script>
+    function uploadFile() {
+        let fd = new FormData();
+        // let csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+        let files = document.getElementById("file0").files;
+        if (files.length < 1) {
+            return;
+        }
+        fd.append("pic", files[0]);
+        // fd.append("csrfmiddlewaretoken", csrfToken);
+        $.ajax({
+            url: "upload_avatar",
+            type: "post",
+            data: fd,
+            processData: false,
+            contentType: false,
+            success: function (res) {
+                console.log(res);
+                $('#img0').attr('src','/static/' + res.fileName).removeClass('hide');
+            },
+            dataType: "json"
+        })
+    }
+</script>
+<div class="row">
+    <div class="col-4">
+        <form name="form0" id="form0">
+            <input type="file" name="file0" id="file0" multiple="multiple" accept="image/png, image/jpeg" />
+            <br><br><img src="" id="img0" width="120" class="hide">
+            <button type="button" class="btn btn-primary" onclick="uploadFile()">アップロード</button>
+        </form>
+
+    </div>
+
+    <div class="col-8">
+        <form action="" method="POST" enctype='multipart/form-data'>
+            <table class="table">
+                <tr>
+                    <th>{{ form.enterID.label }}</th>
+                    <td>{{ form.enterID }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form.DTE.label }}</th>
+                    <td>{{ form.DTE }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form.homeoffice.label }}</th>
+                    <td>{{ form.homeoffice }}</td>
+                </tr>
+
+                <tr>
+                    <th>{{ form.email.label }}</th>
+                    <td>{{ form.email }}</td>
+                </tr>
+
+                <tr>
+                    <th>{{ form.number.label }}</th>
+                    <td>{{ form.number }}</td>
+                </tr>
+
+                <tr>
+                    <th>{{ form.family_name.label }}</th>
+                    <td>{{ form.family_name }}</td>
+                </tr>
+
+                <tr>
+                    <th>{{ form.last_name.label }}</th>
+                    <td>{{ form.last_name }}</td>
+                </tr>
+
+                <tr>
+                    <th>{{ form.role.label }}</th>
+                    <td>{{ form.role }}</td>
+                </tr>
+
+                <tr>
+                    <th>{{ form.career_level.label }}</th>
+                    <td>{{ form.career_level }}</td>
+                </tr>
+
+                <tr>
+                    <th>{{ form.team.label }}</th>
+                    <td>{{ form.team }}</td>
+                </tr>
+
+            </table>
+            <button type="submit" class="btn btn-primary">完了</button>
+            <button type="submit" class="btn btn-secondary">キャンセル</button>
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}
